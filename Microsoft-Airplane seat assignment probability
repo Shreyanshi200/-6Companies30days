@@ -1,0 +1,18 @@
+//when n > 2,
+f(n) = 1/n * ( f(n-1) + f(n-2) + ... + f(1) )
+f(n-1) = 1/(n-1) * (f(n-2) + f(n-3) + ... + f(1))
+
+because, the 2nd equation requires n-1 > 1//
+--------------------------------------------------------------
+
+class Solution {
+public:
+    double nthPersonGetsNthSeat(int n) {
+        if(n==1){
+            return 1;
+        }
+        else{
+            return 0.5;
+        }
+    }
+};
