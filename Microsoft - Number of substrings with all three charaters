@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+       int left = 0,right=0, end = s.size()-1;
+       int count = 0;
+       map<char,int>mp;
+        while(right!=s.size()){
+           mp[s[right]]++;
+           while(mp['a'] and mp['b'] and mp['c']){
+               count += 1+(end-right);
+               mp[s[left]]--;
+               left++;
+           }
+           right++;
+        }
+        return count;
+    }
+};
