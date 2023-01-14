@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool increasingTriplet(vector<int>& nums) {
+        // Method-1
+        // int n =nums.size();
+        // int dp[n];
+        // dp[0]=1;
+        // for(int i=0;i<nums.size();i++){
+        //     dp[i]=1;
+        //     for(int j=0;j<i;j++){
+        //         if(nums[i]>nums[j] && dp[i]<dp[j]+1){
+        //             dp[i] = dp[j]+1;
+        //         }
+        //     }
+        // }
+        // return *max_element(dp,dp+n)>2;
+        int c1 = INT_MAX,c2=INT_MAX;
+        for(auto it:nums){
+            if(it<=c1){
+                c1 = it;
+            }
+            else if(it<=c2){
+                c2 = it;
+            }else{
+                return true;
+            }
+        }
+        return false;
+
+    }
+};
