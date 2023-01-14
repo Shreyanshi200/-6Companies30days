@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int numMatchingSubseq(string s, vector<string>& words) {
+        int count= 0;
+        int k =s.size();
+        unordered_map<string,int>mp;
+        for(int i=0;i<words.size();i++){
+            mp[words[i]]++;
+        }
+        for(auto it:mp){
+            string p=it.first;
+            int m = p.size();
+            int start1=0,start2=0;
+            while(start1<k && start2<m){
+                if(p[start2]==s[start1]){
+                    start1++; start2++;
+                }else{
+                    start1++;
+                }
+                if(start2==m){
+                    count+=it.second;
+                }
+            }
+        }
+        return count;
+    }
+};
