@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int flip(int num){
+        if(num==1){
+            return 2;
+        }
+        return 1;
+    }
+    int magicalString(int n) {
+        string temp = "122";
+        int ans = 1;
+        int idx = 2;
+        int ch =1 ;
+        if(n<=3){
+            return ans;
+        }
+        while(temp.size()<n){
+            int t = temp[idx]-'0';
+            while(t--){
+                temp+=to_string(ch);
+                if(ch==1 && temp.size()<=n){
+                    ans++;
+                }
+            }
+            idx++;
+            
+            ch = flip(ch);
+
+        }
+        return ans;
+    }
+};
