@@ -1,0 +1,43 @@
+class StockPrice {
+public:
+    multiset<int>prices;
+    map<int,int>mp;
+    int max_time=0;
+    
+    StockPrice() {
+    }
+    
+
+    void update(int timestamp, int price) {
+        if(mp.find(timestamp)!=mp.end()){
+            auto it = prices.find(mp[timestamp]);
+            prices.erase(it);
+        }
+        prices.insert(price);
+        mp[timestamp] = price;
+        if(timestamp>max_time){
+            max_time = timestamp;
+        }
+    }
+    
+    int current() {
+        return mp[max_time];
+    }
+    
+    int maximum() {
+        return *prices.rbegin();
+    }
+    
+    int minimum() {
+        return *prices.begin();
+    }
+};
+
+/**
+ * Your StockPrice object will be instantiated and called as such:
+ * StockPrice* obj = new StockPrice();
+ * obj->update(timestamp,price);
+ * int param_2 = obj->current();
+ * int param_3 = obj->maximum();
+ * int param_4 = obj->minimum();
+ */
